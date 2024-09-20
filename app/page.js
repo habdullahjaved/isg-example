@@ -7,9 +7,10 @@ export default function Home() {
     <section>
       <div className="container">
         <div className="row">
-          <h1>Luxury Art Transport</h1>
+          <h1>Ecommerce Demo app</h1>
           <p>
-            We Provide best buses and chauffeur serive in dubai book with us{" "}
+            I have build this application with next js used redux toolkit and
+            also add to cart functionality
           </p>
         </div>
 

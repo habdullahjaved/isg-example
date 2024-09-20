@@ -32,7 +32,10 @@ const NavCart = () => {
         color: "white",
       }}
     >
-      <Link href="/cart"> {cartItems.length}</Link>
+      <Link href="/cart" style={{ color: "white" }}>
+        {" "}
+        {cartItems.length}
+      </Link>
     </div>
   );
 };
