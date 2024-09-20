@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "./storage";
+import storage from "./storage"; // Custom storage for handling SSR
 import { combineReducers } from "redux";
 import { cartReducer } from "./cart/cartSlice";
 import {
@@ -24,22 +24,29 @@ const rootReducer = combineReducers({
   cart: cartReducer, // Add other reducers here if needed
 });
 
-// Check if running in the browser (client-side)
-const persistedReducer =
-  typeof window !== "undefined"
+// Define a function to create a new store per request
+export const makeStore = () => {
+  // Check if running in the browser (client-side) or server (SSR)
+  const isClient = typeof window !== "undefined";
+
+  const persistedReducer = isClient
     ? persistReducer(persistConfig, rootReducer)
     : rootReducer;
 
-export const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== "production",
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        // Ignore these action types
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-});
+  // Create the store
+  const store = configureStore({
+    reducer: persistedReducer,
+    devTools: process.env.NODE_ENV !== "production",
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
+  });
 
-export const persistor = persistStore(store);
+  // Persistor only on the client-side
+  const persistor = isClient ? persistStore(store) : null;
+
+  return { store, persistor };
+};
