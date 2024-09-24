@@ -3,10 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "@/app/lib/cart/cartSlice";
+import CounterComponent from "@/app/components/counter/CounterComponent";
 
 const CartComponent = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
   // Get cart items from the Redux store
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
@@ -18,6 +17,8 @@ const CartComponent = () => {
   );
 
   // Ensure the component is mounted before rendering the cart
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -50,6 +51,9 @@ const CartComponent = () => {
             </div>
           ))}
           <h3>Total Price: {totalPrice.toFixed(2)} AED</h3>
+
+          <hr />
+          <CounterComponent />
         </div>
       )}
     </div>

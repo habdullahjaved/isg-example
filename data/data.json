@@ -1,0 +1,55 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Travel",
+      "slug": "travel"
+    },
+    {
+      "id": 2,
+      "name": "Bus Features",
+      "slug": "bus-features"
+    },
+    {
+      "id": 3,
+      "name": "Payment",
+      "slug": "payment"
+    },
+    {
+      "id": 4,
+      "name": "Tours",
+      "slug": "tours"
+    },
+    {
+      "id": 5,
+      "name": "Locations",
+      "slug": "locations"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Top Travel Tips for Dubai",
+      "slug": "top-travel-tips-for-dubai",
+      "category": 1,
+      "content": "Dubai is a world-renowned travel destination. Here are the top travel tips for your visit...",
+      "publishedAt": "2024-01-10"
+    },
+    {
+      "id": 2,
+      "title": "Why Choose a Luxury Bus?",
+      "slug": "why-choose-a-luxury-bus",
+      "category": 2,
+      "content": "Luxury buses offer unmatched comfort and features, making your journey more enjoyable...",
+      "publishedAt": "2024-01-15"
+    },
+    {
+      "id": 3,
+      "title": "How to Make Payments for Rentals",
+      "slug": "how-to-make-payments-for-rentals",
+      "category": 3,
+      "content": "We offer a range of secure payment options for your bus or van rentals...",
+      "publishedAt": "2024-01-20"
+    }
+  ]
+}

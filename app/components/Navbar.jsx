@@ -22,7 +22,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li style={styles.navItem}>
-          <Link href="/blog" style={styles.navLink}>
+          <Link href="/myblog" style={styles.navLink}>
             Blog
           </Link>
         </li>
